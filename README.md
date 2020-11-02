@@ -1,1 +1,1 @@
-# billing-alert-single-account-terraform
+# billing-alarm-single-account-terraform
