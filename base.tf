@@ -2,7 +2,7 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "3.10.0"
     }
   }
@@ -10,12 +10,17 @@ terraform {
 
 # Provider variables
 provider "aws" {
-region  = "us-east-1"
-profile = "scc-admin"
+  region  = "us-east-1"
+  profile = "scc-admin"
 }
 
 # Resource ec2 instance
 resource "aws_instance" "base" {
-ami           = "ami-0947d2ba12ee1ff75"
-instance_type = "t2.micro"
+  ami           = "ami-0947d2ba12ee1ff75"
+  instance_type = "t2.micro"
+}
+
+# Resource eip
+resource "aws_eip" "base" {
+  instance = aws_instance.base.id
 }
